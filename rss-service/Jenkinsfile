@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    tools { 
+        maven 'Maven 3.6.1'
+        jdk 'jdk8' 
+    }
+    stages {
+        stage ('Initialize') {
+           steps {
+               bat '''
+                   echo "PATH = ${PATH}"
+                   echo "MAVEN_HOME = ${MAVEN_HOME}"
+                   echo "Cleaning"
+                   cd rss-service
+                   mvn clean
+              '''
+       		}
+		}
+        stage('Compile') {
+            steps {		
+				echo 'Compiling'		                
+				bat	'''cd rss-service 
+				mvn compile'''	
+ 	       }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+                bat '''
+                	cd rss-service
+                	mvn test
+                '''
+            }
+        }
+        stage('Build') {
+            steps {
+				echo 'Building'		                
+				bat	'''cd rss-service 
+				mvn package -DskipTests'''
+            }
+        }
+    }
+}
