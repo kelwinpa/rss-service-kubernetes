@@ -6,6 +6,10 @@ The project is a microservice that polls a news feed from http://feeds.nos.nl/no
 
 All layers have been tested with Junit, AssertJ, Suite and Spring Test.
 
+## Devops Workflow
+
+![alt text](rss-service/images/Devops-workflow.jpg?raw=true "Devops Workflow")
+
 ## Technologies
 
 * [SpringBoot] - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".!
