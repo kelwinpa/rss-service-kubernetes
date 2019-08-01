@@ -76,8 +76,11 @@ As soon you made a push of your code in Github, Jenkins will scan your repositor
 2) Compile: Compile the project.
 3) Test: Test the project.
 4) Build: Package the project into a docker image and push it into the DockerHub repository.
-
-## Run it with K8S
+5) Deploy: Run K8S deploy in local cluster as follow.
+```sh
+kubectl create -f rss-service-deployment-manifest.yaml
+```
+## Check all with K8S
 
 __note__: Kubectl must be installed, Docker for desktop include a K8S installation.
 
@@ -89,10 +92,6 @@ kubectl config get-contexts
 ```
 Expected output: * docker-for-desktop or docker-desktop according to your docker installation.
 
-Create the Deployment by running the following command, you must in the file root dir.
-```sh
-kubectl apply -f rss-service-deployment-manifest.yaml
-```
 Finally run the next command to check if everything went well.
 ```sh
 kubectl get svc,deployment,pod
